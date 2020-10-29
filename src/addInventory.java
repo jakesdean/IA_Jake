@@ -157,8 +157,10 @@ class addInventory extends Inventory{
             if (!t.getText().isEmpty()) {
                 try {
                     type.seek(position(0,"type.txt"));
-                    Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t.getText());
-                    addInv(i, 0, "type.txt");
+                    try {
+                        Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t.getText());
+                        addInv(i, 0, "type.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -167,8 +169,10 @@ class addInventory extends Inventory{
             if (!t1.getText().isEmpty()) {
                 try {
                     type.seek(position(1,"type.txt"));
-                    Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t1.getText());
-                    addInv(i, 1, "type.txt");
+                    try {
+                        Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t1.getText());
+                        addInv(i, 1, "type.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -177,8 +181,10 @@ class addInventory extends Inventory{
             if (!t2.getText().isEmpty()) {
                 try {
                     type.seek(position(2,"type.txt"));
-                    Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t2.getText());
-                    addInv(i, 2, "type.txt");
+                    try {
+                        Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t2.getText());
+                        addInv(i, 2, "type.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -187,8 +193,10 @@ class addInventory extends Inventory{
             if (!t3.getText().isEmpty()) {
                 try {
                     type.seek(position(3,"type.txt"));
-                    Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t3.getText());
-                    addInv(i, 3, "type.txt");
+                    try {
+                        Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t3.getText());
+                        addInv(i, 3, "type.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -197,8 +205,10 @@ class addInventory extends Inventory{
             if (!t4.getText().isEmpty()) {
                 try {
                     type.seek(position(4,"type.txt"));
-                    Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t4.getText());
-                    addInv(i, 4, "type.txt");
+                    try {
+                        Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t4.getText());
+                        addInv(i, 4, "type.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -207,8 +217,10 @@ class addInventory extends Inventory{
             if (!t5.getText().isEmpty()) {
                 try {
                     type.seek(position(5,"type.txt"));
-                    Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t5.getText());
-                    addInv(i, 5, "type.txt");
+                    try {
+                        Integer i = Integer.parseInt(type.readLine()) + Integer.parseInt(t5.getText());
+                        addInv(i, 5, "type.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -217,8 +229,10 @@ class addInventory extends Inventory{
             if (!t6.getText().isEmpty()) {
                 try {
                     cookie.seek(position(0,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t6.getText());
-                    addInv(i, 0, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t6.getText());
+                        addInv(i, 0, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -227,8 +241,10 @@ class addInventory extends Inventory{
             if (!t7.getText().isEmpty()) {
                 try {
                     cookie.seek(position(1,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t7.getText());
-                    addInv(i, 1, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t7.getText());
+                        addInv(i, 1, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -237,8 +253,10 @@ class addInventory extends Inventory{
             if (!t8.getText().isEmpty()) {
                 try {
                     cookie.seek(position(2,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t8.getText());
-                    addInv(i, 2, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t8.getText());
+                        addInv(i, 2, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -247,8 +265,10 @@ class addInventory extends Inventory{
             if (!t9.getText().isEmpty()) {
                 try {
                     cookie.seek(position(3,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t9.getText());
-                    addInv(i, 3, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t9.getText());
+                        addInv(i, 3, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -257,8 +277,10 @@ class addInventory extends Inventory{
             if (!t10.getText().isEmpty()) {
                 try {
                     cookie.seek(position(4,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t10.getText());
-                    addInv(i, 4, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) + Integer.parseInt(t10.getText());
+                        addInv(i, 4, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -267,8 +289,10 @@ class addInventory extends Inventory{
             if (!t11.getText().isEmpty()) {
                 try {
                     cup.seek(position(0,"cup.txt"));
-                    Integer i = Integer.parseInt(cup.readLine()) + Integer.parseInt(t11.getText());
-                    addInv(i, 0, "cup.txt");
+                    try {
+                        Integer i = Integer.parseInt(cup.readLine()) + Integer.parseInt(t11.getText());
+                        addInv(i, 0, "cup.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -277,8 +301,10 @@ class addInventory extends Inventory{
             if (!t12.getText().isEmpty()) {
                 try {
                     cup.seek(position(1,"cup.txt"));
-                    Integer i = Integer.parseInt(cup.readLine()) + Integer.parseInt(t12.getText());
-                    addInv(i, 1, "cup.txt");
+                    try {
+                        Integer i = Integer.parseInt(cup.readLine()) + Integer.parseInt(t12.getText());
+                        addInv(i, 1, "cup.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -287,8 +313,10 @@ class addInventory extends Inventory{
             if (!t13.getText().isEmpty()) {
                 try {
                     cup.seek(position(2,"cup.txt"));
-                    Integer i = Integer.parseInt(cup.readLine()) + Integer.parseInt(t13.getText());
-                    addInv(i, 2, "cup.txt");
+                    try {
+                        Integer i = Integer.parseInt(cup.readLine()) + Integer.parseInt(t13.getText());
+                        addInv(i, 2, "cup.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

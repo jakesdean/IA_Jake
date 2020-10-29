@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -71,11 +70,14 @@ public class CustomOrder extends addInventory {
         RandomAccessFile cup = new RandomAccessFile("cup.txt", "rw");
 
         b.addActionListener(arg0 -> {
+
             if (!t.getText().isEmpty()) {
                 try {
                     cookie.seek(position(0,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t.getText());
-                    addInv(i, 0, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t.getText());
+                        addInv(i, 0, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -84,8 +86,9 @@ public class CustomOrder extends addInventory {
             if (!t1.getText().isEmpty()) {
                 try {
                     cookie.seek(position(1,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t1.getText());
-                    addInv(i, 1, "cookie.txt");
+                    try {Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t1.getText());
+                        addInv(i, 1, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -94,8 +97,10 @@ public class CustomOrder extends addInventory {
             if (!t2.getText().isEmpty()) {
                 try {
                     cookie.seek(position(2,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t2.getText());
-                    addInv(i, 2, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t2.getText());
+                        addInv(i, 2, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -104,8 +109,10 @@ public class CustomOrder extends addInventory {
             if (!t3.getText().isEmpty()) {
                 try {
                     cookie.seek(position(3,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t3.getText());
-                    addInv(i, 3, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t3.getText());
+                        addInv(i, 3, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -114,8 +121,10 @@ public class CustomOrder extends addInventory {
             if (!t4.getText().isEmpty()) {
                 try {
                     cookie.seek(position(4,"cookie.txt"));
-                    Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t4.getText());
-                    addInv(i, 4, "cookie.txt");
+                    try {
+                        Integer i = Integer.parseInt(cookie.readLine()) - Integer.parseInt(t4.getText());
+                        addInv(i, 4, "cookie.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -124,8 +133,10 @@ public class CustomOrder extends addInventory {
             if (!t5.getText().isEmpty()) {
                 try {
                     cup.seek(position(0,"cup.txt"));
-                    Integer i = Integer.parseInt(cup.readLine()) - Integer.parseInt(t5.getText());
-                    addInv(i, 0, "cup.txt");
+                    try {
+                        Integer i = Integer.parseInt(cup.readLine()) - Integer.parseInt(t5.getText());
+                        addInv(i, 0, "cup.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -134,8 +145,9 @@ public class CustomOrder extends addInventory {
             if (!t6.getText().isEmpty()) {
                 try {
                     cup.seek(position(1,"cup.txt"));
-                    Integer i = Integer.parseInt(cup.readLine()) - Integer.parseInt(t6.getText());
-                    addInv(i, 1, "cup.txt");
+                    try {Integer i = Integer.parseInt(cup.readLine()) - Integer.parseInt(t6.getText());
+                        addInv(i, 1, "cup.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -144,8 +156,10 @@ public class CustomOrder extends addInventory {
             if (!t7.getText().isEmpty()) {
                 try {
                     cup.seek(position(2,"cup.txt"));
-                    Integer i = Integer.parseInt(cup.readLine()) - Integer.parseInt(t7.getText());
-                    addInv(i, 2, "cup.txt");
+                    try {
+                        Integer i = Integer.parseInt(cup.readLine()) - Integer.parseInt(t7.getText());
+                        addInv(i, 2, "cup.txt");
+                    } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

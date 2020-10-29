@@ -100,23 +100,17 @@ class Inventory extends Order {
         RandomAccessFile type = new RandomAccessFile("type.txt", "rw");
         RandomAccessFile cookie = new RandomAccessFile("cookie.txt", "rw");
         RandomAccessFile cup = new RandomAccessFile("cup.txt", "rw");
-        var intList = new Integer[6];
-        String[] strList;
 
-        strList = getList(6,"type.txt");
-        for (int i = 0; i < 6; i++) {
-            intList[i] = Integer.parseInt(strList[i]);
+
+        type.seek(position(getType(),"type.txt"));
+        Integer c = null;
+        int l = Integer.parseInt(type.readLine());
+        if (getLength() == 1) {
+            c = l - 2;
+        } else if (getLength() == 0){
+            c = l - 1;
         }
-
-            type.seek(position(getType(),"type.txt"));
-            Integer c = null;
-            int l = Integer.parseInt(type.readLine());
-            if (getLength() == 1) {
-                c = l - 2;
-            } else if (getLength() == 0){
-                c = l - 1;
-            }
-            addInventory.addInv(c, getType(), "type.txt");
+        addInventory.addInv(c, getType(), "type.txt");
 
         if (getCookie() != 5) {
             cookie.seek(position(getCookie(), "cookie.txt"));

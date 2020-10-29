@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
-public class Register extends main{
+public class Register extends login {
     private static String usr;
     private static String pass;
 
