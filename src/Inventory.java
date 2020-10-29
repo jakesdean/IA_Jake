@@ -103,17 +103,10 @@ class Inventory extends Order {
         var intList = new Integer[6];
         String[] strList;
 
-
-        if (type.length() == 0) {
-            type.seek(0);
-            type.writeBytes("0\n0\n0\n0\n0\n0");
-        }
-
         strList = getList(6,"type.txt");
         for (int i = 0; i < 6; i++) {
             intList[i] = Integer.parseInt(strList[i]);
         }
-
 
             type.seek(position(getType(),"type.txt"));
             Integer c = null;
@@ -125,29 +118,16 @@ class Inventory extends Order {
             }
             addInventory.addInv(c, getType(), "type.txt");
 
-
-
-        if (cookie.length() == 0) {
-            cookie.seek(0);
-            cookie.writeBytes("0\n0\n0\n0\n0");
-        }
-
         if (getCookie() != 5) {
             cookie.seek(position(getCookie(), "cookie.txt"));
             c = Integer.parseInt(cookie.readLine()) - 1;
             addInventory.addInv(c, getCookie(), "cookie.txt");
         }
 
-
-        if (cup.length() == 0) {
-            cup.seek(0);
-            cup.writeBytes("0\n0\n0");
-        }
-
-        if (getDrink() != 3) {
-            cup.seek(position(getDrink(),"cup.txt"));
+        if (getCup() != 3) {
+            cup.seek(position(getCup(),"cup.txt"));
             c = Integer.parseInt(cup.readLine()) - 1;
-            addInventory.addInv(c, getDrink(), "cup.txt");
+            addInventory.addInv(c, getCup(), "cup.txt");
         }
     }
 
@@ -164,6 +144,20 @@ class Inventory extends Order {
             }
         return pos;
     }
+
+    static void checkRAF(Integer length, String filePath) throws IOException {
+        File file = new File(filePath);
+        RandomAccessFile raf = new RandomAccessFile(file, "rw");
+        for (int i = 0; i < length; i++) {
+            int l = position(i, filePath);
+            raf.seek(l);
+            if (raf.readLine() == null) {
+                raf.seek(l);
+                raf.writeBytes("0\n");
+            }
+        }
+    }
+
 
     static String[] getList(Integer length, String filePath) throws IOException {
         String[] arr = new String[10];

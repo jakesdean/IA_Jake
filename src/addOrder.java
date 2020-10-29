@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.io.IOException;
-import java.util.function.ToDoubleBiFunction;
 
 class addOrder extends Order{
 
@@ -178,13 +177,13 @@ class addOrder extends Order{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
 
-        if (getCookie() == 5 || getDrink() == 3) {
+        if (getCookie() == 5 || getCup() == 3) {
             order.setMenu(2);
             f.setVisible(false);
             showPrice();
         }
 
-        if (getDrink() != 0) {
+        if (getCup() != 0) {
             b1.setVisible(false);
         }
         b.addActionListener(arg0 -> {
@@ -227,22 +226,22 @@ class addOrder extends Order{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         b.addActionListener(arg0 -> {
-            order.setDrink(0);
+            order.setCup(0);
             f.setVisible(false);
             addMenu();
         });
         b1.addActionListener(arg0 -> {
-            order.setDrink(1);
+            order.setCup(1);
             f.setVisible(false);
             addMenu();
         });
         b2.addActionListener(arg0 -> {
-            order.setDrink(2);
+            order.setCup(2);
             f.setVisible(false);
             addMenu();
         });
         b3.addActionListener(arg0 -> {
-            order.setDrink(3);
+            order.setCup(3);
             f.setVisible(false);
             addMenu();
         });

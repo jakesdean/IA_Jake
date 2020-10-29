@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         JFrame j = new JFrame();
         j.setSize(300, 400);
@@ -36,6 +36,10 @@ public class main {
         j.setLayout(null);
         j.setVisible(true);
         j.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        Inventory.checkRAF(6, "type.txt");
+        Inventory.checkRAF(5, "cookie.txt");
+        Inventory.checkRAF(3, "cup.txt");
 
         b.addActionListener(arg0 -> {
             try {
@@ -70,8 +74,7 @@ public class main {
         } else {
             main.seek(0);
             String log1 = main.readLine();
-            int pos = log1.length() + 1;
-            main.seek(pos);
+            main.seek(Inventory.position(1, "main.txt"));
             String pass1 = main.readLine();
             main.close();
 

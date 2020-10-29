@@ -4,7 +4,7 @@ public class Order {
     private static Integer length;
     private static Integer cookie;
     private static Integer menu;
-    private static Integer drink;
+    private static Integer cup;
 
 
     void setType(Integer type) { Order.type = type;}
@@ -21,8 +21,8 @@ public class Order {
         Order.menu = menu;
     }
 
-    void setDrink(Integer drink) {
-        Order.drink = drink;
+    void setCup(Integer cup) {
+        Order.cup = cup;
     }
 
     static Integer getType() {
@@ -37,8 +37,8 @@ public class Order {
         return cookie;
     }
 
-    static Integer getDrink() {
-        return drink;
+    static Integer getCup() {
+        return cup;
     }
 
     static Double getPrice() {
@@ -71,11 +71,11 @@ public class Order {
             price = price + 1.50;
         }
 
-        if (drink == 0) {
+        if (cup == 0) {
             price = price + 3.00;
-        } else if (drink == 1) {
+        } else if (cup == 1) {
             price = price + 3.50;
-        } else if (drink == 2) {
+        } else if (cup == 2) {
             price = price + 4.00;
         }
         return price;
