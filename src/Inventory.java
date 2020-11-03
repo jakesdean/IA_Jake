@@ -9,7 +9,7 @@ class Inventory extends Order {
     static void InventoryCheck() throws IOException {
 
         JFrame j = new JFrame("Inventory");
-        j.setSize(400, 250);
+        j.setSize(500, 400);
         JLabel l = new JLabel("Steak");
         l.setBounds(50, 50, 100, 20);
         JLabel l1 = new JLabel("Chicken");
@@ -41,8 +41,27 @@ class Inventory extends Order {
         l13.setBounds(270, 75, 100, 20);
         JLabel l14 = new JLabel("0.3 l");
         l14.setBounds(270, 100, 100, 20);
+        JLabel l15 = new JLabel("spinach");
+        l15.setBounds(350, 50, 100, 20);
+        JLabel l16 = new JLabel("peppers");
+        l16.setBounds(350, 75, 100, 20);
+        JLabel l17 = new JLabel("olives");
+        l17.setBounds(350, 100, 100, 20);
+        JLabel l18 = new JLabel("Cucumbers");
+        l18.setBounds(350, 125, 100, 20);
+        JLabel l19 = new JLabel("lettuce");
+        l19.setBounds(350, 150, 100, 20);
+        JLabel l20 = new JLabel("pickles");
+        l20.setBounds(350, 175, 100, 20);
+        JLabel l21 = new JLabel("onions");
+        l21.setBounds(350, 200, 100, 20);
+        JLabel l22 = new JLabel("tomatoes");
+        l22.setBounds(350, 225, 100, 20);
+        JLabel l23 = new JLabel("jalapenos");
+        l23.setBounds(350, 250, 100, 20);
+
         JButton b = new JButton("back");
-        b.setBounds(275,150,100,50);
+        b.setBounds(50,275,200,50);
 
         j.add(l);
         j.add(l1);
@@ -59,6 +78,15 @@ class Inventory extends Order {
         j.add(l12);
         j.add(l13);
         j.add(l14);
+        j.add(l15);
+        j.add(l16);
+        j.add(l17);
+        j.add(l18);
+        j.add(l19);
+        j.add(l20);
+        j.add(l21);
+        j.add(l22);
+        j.add(l23);
         j.add(b);
         j.setLayout(null);
         j.setVisible(true);
@@ -82,11 +110,24 @@ class Inventory extends Order {
         l10.setText("White chip: " + inv[3]);
         l11.setText("Rainbow: " + inv[4]);
 
-        inv = getList(5, "cookie.txt");
+        inv = getList(3, "cookie.txt");
 
         l12.setText("0.5 l: " + inv[0]);
         l13.setText("0.4 l: " + inv[1]);
         l14.setText("0.3 l: " + inv [2]);
+
+        inv = getList(9, "veg.txt");
+
+        l15.setText("Spinach: " + inv[0]);
+        l16.setText("Peppers: " + inv[1]);
+        l17.setText("Olives: " + inv[2]);
+        l18.setText("Cucumbers: " + inv[3]);
+        l19.setText("Lettuce: " + inv[4]);
+        l20.setText("Pickles: " + inv[5]);
+        l21.setText("Onions: " + inv[6]);
+        l22.setText("Tomatoes: " + inv[7]);
+        l23.setText("Jalapenos: " + inv[8]);
+
 
         b.addActionListener(arg0 -> {
             j.setVisible(false);
@@ -100,6 +141,7 @@ class Inventory extends Order {
         RandomAccessFile type = new RandomAccessFile("type.txt", "rw");
         RandomAccessFile cookie = new RandomAccessFile("cookie.txt", "rw");
         RandomAccessFile cup = new RandomAccessFile("cup.txt", "rw");
+        RandomAccessFile veg = new RandomAccessFile("veg.txt", "rw");
 
 
         type.seek(position(getType(),"type.txt"));
@@ -123,6 +165,18 @@ class Inventory extends Order {
             c = Integer.parseInt(cup.readLine()) - 1;
             addInventory.addInv(c, getCup(), "cup.txt");
         }
+
+        Integer[] ary = getVeggies();
+
+        for (int i = 0; i < 9; i ++) {
+
+            if (ary[i] == 1) {
+                veg.seek(position(i,"veg.txt"));
+                c = Integer.parseInt(veg.readLine()) - 1;
+                addInventory.addInv(c,i,"veg.txt");
+            }
+        }
+
     }
 
     static Integer position(Integer line, String filePath) throws IOException {
@@ -154,7 +208,7 @@ class Inventory extends Order {
 
 
     static String[] getList(Integer length, String filePath) throws IOException {
-        String[] arr = new String[10];
+        String[] arr = new String[length];
         File file = new File(filePath);
         RandomAccessFile raf = new RandomAccessFile(file,"rw");
         int c = 0;

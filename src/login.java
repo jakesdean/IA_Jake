@@ -40,6 +40,7 @@ public class login {
         Inventory.checkRAF(6, "type.txt");
         Inventory.checkRAF(5, "cookie.txt");
         Inventory.checkRAF(3, "cup.txt");
+        Inventory.checkRAF(9, "veg.txt");
 
         b.addActionListener(arg0 -> {
             try {

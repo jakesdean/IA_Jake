@@ -5,6 +5,7 @@ public class Order {
     private static Integer cookie;
     private static Integer menu;
     private static Integer cup;
+    private static final Integer[] veggies = new Integer[9];
 
 
     void setType(Integer type) { Order.type = type;}
@@ -25,6 +26,10 @@ public class Order {
         Order.cup = cup;
     }
 
+    void setVeggies(Integer[] veggies) {
+        System.arraycopy(veggies, 0, Order.veggies, 0, 9);
+    }
+
     static Integer getType() {
         return type;
     }
@@ -39,6 +44,10 @@ public class Order {
 
     static Integer getCup() {
         return cup;
+    }
+
+    static Integer[] getVeggies() {
+        return veggies;
     }
 
     static Double getPrice() {

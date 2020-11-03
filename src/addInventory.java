@@ -25,7 +25,11 @@ class addInventory extends Inventory{
             case "cup.txt":
                 l = 3;
                 break;
+            case "veg.txt":
+                l = 9;
+                break;
         }
+
 
 
         strList = getList(l,filePath);
@@ -52,7 +56,7 @@ class addInventory extends Inventory{
 
     static void InvSetup() throws FileNotFoundException {
         JFrame j = new JFrame("Add Inventory");
-        j.setSize(400, 250);
+        j.setSize(500, 400);
         JLabel l = new JLabel("Steak");
         l.setBounds(50, 50, 100, 20);
         JLabel l1 = new JLabel("Chicken");
@@ -84,6 +88,24 @@ class addInventory extends Inventory{
         l13.setBounds(270, 75, 100, 20);
         JLabel l14 = new JLabel("0.5 l");
         l14.setBounds(270, 100, 100, 20);
+        JLabel l15 = new JLabel("spinach");
+        l15.setBounds(350, 50, 100, 20);
+        JLabel l16 = new JLabel("peppers");
+        l16.setBounds(350, 75, 75, 20);
+        JLabel l17 = new JLabel("olives");
+        l17.setBounds(350, 100, 75, 20);
+        JLabel l18 = new JLabel("Cucumbers");
+        l18.setBounds(350, 125, 75, 20);
+        JLabel l19 = new JLabel("lettuce");
+        l19.setBounds(350, 150, 75, 20);
+        JLabel l20 = new JLabel("pickles");
+        l20.setBounds(350, 175, 75, 20);
+        JLabel l21 = new JLabel("onions");
+        l21.setBounds(350, 200, 75, 20);
+        JLabel l22 = new JLabel("tomatoes");
+        l22.setBounds(350, 225, 75, 20);
+        JLabel l23 = new JLabel("jalapenos");
+        l23.setBounds(350, 250, 75, 20);
         JTextField t = new JTextField();
         t.setBounds(100,50,35,20);
         JTextField t1 = new JTextField();
@@ -112,15 +134,33 @@ class addInventory extends Inventory{
         t12.setBounds(300,75,35,20);
         JTextField t13 = new JTextField();
         t13.setBounds(300,100,35,20);
+        JTextField t14 = new JTextField();
+        t14.setBounds(420,50,35,20);
+        JTextField t15 = new JTextField();
+        t15.setBounds(420,75,35,20);
+        JTextField t16 = new JTextField();
+        t16.setBounds(420,100,35,20);
+        JTextField t17 = new JTextField();
+        t17.setBounds(420,125,35,20);
+        JTextField t18 = new JTextField();
+        t18.setBounds(420,150,35,20);
+        JTextField t19 = new JTextField();
+        t19.setBounds(420,175,35,20);
+        JTextField t20 = new JTextField();
+        t20.setBounds(420,200,35,20);
+        JTextField t21 = new JTextField();
+        t21.setBounds(420,225,35,20);
+        JTextField t22 = new JTextField();
+        t22.setBounds(420,250,35,20);
         JButton b = new JButton("Save");
-        b.setBounds(275,150,100,50);
+        b.setBounds(50,275,200,50);
         j.add(l);
         j.add(l1);
         j.add(l2);
         j.add(l3);
         j.add(l4);
-        j.add(l5);
         j.add(l6);
+        j.add(l5);
         j.add(l7);
         j.add(l8);
         j.add(l9);
@@ -129,6 +169,15 @@ class addInventory extends Inventory{
         j.add(l12);
         j.add(l13);
         j.add(l14);
+        j.add(l15);
+        j.add(l16);
+        j.add(l17);
+        j.add(l18);
+        j.add(l19);
+        j.add(l20);
+        j.add(l21);
+        j.add(l22);
+        j.add(l23);
         j.add(t);
         j.add(t1);
         j.add(t2);
@@ -143,6 +192,15 @@ class addInventory extends Inventory{
         j.add(t11);
         j.add(t12);
         j.add(t13);
+        j.add(t14);
+        j.add(t15);
+        j.add(t16);
+        j.add(t17);
+        j.add(t18);
+        j.add(t19);
+        j.add(t20);
+        j.add(t21);
+        j.add(t22);
         j.add(b);
         j.setLayout(null);
         j.setVisible(true);
@@ -151,6 +209,7 @@ class addInventory extends Inventory{
         RandomAccessFile type = new RandomAccessFile("type.txt", "rw");
         RandomAccessFile cookie = new RandomAccessFile("cookie.txt", "rw");
         RandomAccessFile cup = new RandomAccessFile("cup.txt", "rw");
+        RandomAccessFile veg = new RandomAccessFile("veg.txt", "rw");
 
         b.addActionListener(agr0 -> {
 
@@ -316,6 +375,114 @@ class addInventory extends Inventory{
                     try {
                         Integer i = Integer.parseInt(cup.readLine()) + Integer.parseInt(t13.getText());
                         addInv(i, 2, "cup.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t15.getText().isEmpty()) {
+                try {
+                    veg.seek(position(0,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t15.getText());
+                        addInv(i, 0, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t16.getText().isEmpty()) {
+                try {
+                    veg.seek(position(1,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t16.getText());
+                        addInv(i, 1, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t16.getText().isEmpty()) {
+                try {
+                    veg.seek(position(2,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t16.getText());
+                        addInv(i, 2, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t17.getText().isEmpty()) {
+                try {
+                    veg.seek(position(3,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t17.getText());
+                        addInv(i, 3, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t18.getText().isEmpty()) {
+                try {
+                    veg.seek(position(4,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t18.getText());
+                        addInv(i, 4, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t19.getText().isEmpty()) {
+                try {
+                    veg.seek(position(5,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t19.getText());
+                        addInv(i, 5, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t20.getText().isEmpty()) {
+                try {
+                    veg.seek(position(6,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t20.getText());
+                        addInv(i, 6, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t21.getText().isEmpty()) {
+                try {
+                    veg.seek(position(7,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t21.getText());
+                        addInv(i, 7, "veg.txt");
+                    } catch (NumberFormatException ignored) {}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (!t22.getText().isEmpty()) {
+                try {
+                    veg.seek(position(8,"veg.txt"));
+                    try {
+                        Integer i = Integer.parseInt(veg.readLine()) + Integer.parseInt(t22.getText());
+                        addInv(i, 8, "veg.txt");
                     } catch (NumberFormatException ignored) {}
                 } catch (IOException e) {
                     e.printStackTrace();

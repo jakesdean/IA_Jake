@@ -24,8 +24,6 @@ class Menu {
 
         JLabel label1 = new JLabel();
         label1.setBounds(10, 170, 200, 100);
-        //textfield to enter name
-        //add to frame
         f.add(label1);
         f.add(b);
         f.add(b1);
