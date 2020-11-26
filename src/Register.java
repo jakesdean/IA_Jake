@@ -17,7 +17,6 @@ public class Register extends login {
 
         RandomAccessFile main = new RandomAccessFile("main.txt", "rw");
 
-
         JFrame j = new JFrame();
             j.setSize(300, 400);
             JLabel l = new JLabel("Register");

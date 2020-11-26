@@ -8,7 +8,9 @@ public class Order {
     private static final Integer[] veggies = new Integer[9];
 
 
-    void setType(Integer type) { Order.type = type;}
+    void setType(Integer type) {
+        Order.type = type;
+    }
 
     void setLength(Integer length) {
         Order.length = length;

@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.*;
 
 class Inventory extends Order {
 
@@ -62,6 +64,11 @@ class Inventory extends Order {
 
         JButton b = new JButton("back");
         b.setBounds(50,275,200,50);
+        JButton b1 = new JButton("order");
+        b1.setBounds(350,275,100,50);
+
+        JComboBox<String> box = new JComboBox<String>(new String[]{"Highest to Lowest","Lowest to Highest"});
+        box.setBounds(330,325,150,20);
 
         j.add(l);
         j.add(l1);
@@ -88,6 +95,8 @@ class Inventory extends Order {
         j.add(l22);
         j.add(l23);
         j.add(b);
+        j.add(b1);
+        j.add(box);
         j.setLayout(null);
         j.setVisible(true);
         j.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -134,6 +143,14 @@ class Inventory extends Order {
             Menu.layout();
         });
 
+        b1.addActionListener(arg0 -> {
+            try {
+                orderInv((String) box.getSelectedItem());
+                j.setVisible(false);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     static void takeInventory() throws IOException {
@@ -176,7 +193,6 @@ class Inventory extends Order {
                 addInventory.addInv(c,i,"veg.txt");
             }
         }
-
     }
 
     static Integer position(Integer line, String filePath) throws IOException {
@@ -220,6 +236,88 @@ class Inventory extends Order {
             c = c + i + 1;
         }
         return arr;
+    }
+
+
+    static Integer getLine(Integer line, String filePath) throws IOException {
+        File file = new File(filePath);
+        RandomAccessFile raf = new RandomAccessFile(file, "rw");
+        raf.seek(position(line, filePath));
+        int out = Integer.parseInt(raf.readLine());
+        return out;
+    }
+
+    static void orderInv(String option) throws IOException {
+        HashMap<Integer, String> Map = new HashMap<>();
+            Map.put(getLine(1, "type.txt"), "Chicken");
+            Map.put(getLine(2, "type.txt"), "Salami");
+            Map.put(getLine(3, "type.txt"), "Veggie");
+            Map.put(getLine(0, "type.txt"), "Steak");
+            Map.put(getLine(4, "type.txt"), "Tuna");
+            Map.put(getLine(5, "type.txt"), "Ham");
+            Map.put(getLine(0, "cookie.txt"), "Choc Chip");
+            Map.put(getLine(1, "cookie.txt"), "Double Choc");
+            Map.put(getLine(2, "cookie.txt"), "Ras Cheese");
+            Map.put(getLine(3, "cookie.txt"), "White Chip");
+            Map.put(getLine(4, "cookie.txt"), "Rainbow");
+            Map.put(getLine(0, "cup.txt"), "0.3 l");
+            Map.put(getLine(1, "cup.txt"), "0.4 l");
+            Map.put(getLine(2, "cup.txt"), "0.5 l");
+            Map.put(getLine(0, "veg.txt"), "Spinach");
+            Map.put(getLine(1, "veg.txt"), "Peppers");
+            Map.put(getLine(2, "veg.txt"), "Olives");
+            Map.put(getLine(3, "veg.txt"), "Cucumbers");
+            Map.put(getLine(4, "veg.txt"), "Lettuce");
+            Map.put(getLine(5, "veg.txt"), "pickles");
+            Map.put(getLine(6, "veg.txt"), "Onion");
+            Map.put(getLine(7, "veg.txt"), "Tomatoes");
+            Map.put(getLine(8, "veg.txt"), "Jalapenos");
+
+
+        String[] list = new String[Map.size()];
+        Map<Integer, String> map = new TreeMap<>(Map);
+        Set set = map.entrySet();
+        int i = 0;
+        for (Object o : set) {
+            Map.Entry me = (Map.Entry) o;
+            list[i] = me.getValue() + ": " + me.getKey();
+            i++;
+        }
+
+        JFrame f = new JFrame("order Inventory");
+        f.setSize(300,600);
+        JButton b = new JButton("back");
+        b.setBounds(50,500,150,50);
+        f.add(b);
+
+        int r = 0;
+        if(option.equals("Lowest to Highest")){
+            for (String s : list) {
+                JLabel l = new JLabel(s);
+                l.setBounds(25, 20 + 20* r, 150, 10);
+                f.add(l);
+                r++;
+            }
+        }
+        if(option.equals("Highest to Lowest")){
+            for (int n = 0; n < list.length; n++) {
+                JLabel l = new JLabel(list[list.length - 1 - n]);
+                l.setBounds(25, 20 + 20 * n, 150, 10);
+                f.add(l);
+            }
+        }
+        f.setLayout(null);
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        f.setVisible(true);
+
+        b.addActionListener(arg0 -> {
+            f.setVisible(false);
+            try {
+                InventoryCheck();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 }
