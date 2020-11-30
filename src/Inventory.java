@@ -243,8 +243,7 @@ class Inventory extends Order {
         File file = new File(filePath);
         RandomAccessFile raf = new RandomAccessFile(file, "rw");
         raf.seek(position(line, filePath));
-        int out = Integer.parseInt(raf.readLine());
-        return out;
+        return Integer.parseInt(raf.readLine());
     }
 
     static void orderInv(String option) throws IOException {
