@@ -248,39 +248,37 @@ class Inventory extends Order {
     }
 
     static void orderInv(String option) throws IOException {
-        HashMap<Integer, String> Map = new HashMap<>();
-            Map.put(getLine(1, "type.txt"), "Chicken");
-            Map.put(getLine(2, "type.txt"), "Salami");
-            Map.put(getLine(3, "type.txt"), "Veggie");
-            Map.put(getLine(0, "type.txt"), "Steak");
-            Map.put(getLine(4, "type.txt"), "Tuna");
-            Map.put(getLine(5, "type.txt"), "Ham");
-            Map.put(getLine(0, "cookie.txt"), "Choc Chip");
-            Map.put(getLine(1, "cookie.txt"), "Double Choc");
-            Map.put(getLine(2, "cookie.txt"), "Ras Cheese");
-            Map.put(getLine(3, "cookie.txt"), "White Chip");
-            Map.put(getLine(4, "cookie.txt"), "Rainbow");
-            Map.put(getLine(0, "cup.txt"), "0.3 l");
-            Map.put(getLine(1, "cup.txt"), "0.4 l");
-            Map.put(getLine(2, "cup.txt"), "0.5 l");
-            Map.put(getLine(0, "veg.txt"), "Spinach");
-            Map.put(getLine(1, "veg.txt"), "Peppers");
-            Map.put(getLine(2, "veg.txt"), "Olives");
-            Map.put(getLine(3, "veg.txt"), "Cucumbers");
-            Map.put(getLine(4, "veg.txt"), "Lettuce");
-            Map.put(getLine(5, "veg.txt"), "pickles");
-            Map.put(getLine(6, "veg.txt"), "Onion");
-            Map.put(getLine(7, "veg.txt"), "Tomatoes");
-            Map.put(getLine(8, "veg.txt"), "Jalapenos");
+        HashMap<Integer, String> HMap = new HashMap<>();
+            HMap.put(getLine(1, "type.txt"), "Chicken");
+            HMap.put(getLine(2, "type.txt"), "Salami");
+            HMap.put(getLine(3, "type.txt"), "Veggie");
+            HMap.put(getLine(0, "type.txt"), "Steak");
+            HMap.put(getLine(4, "type.txt"), "Tuna");
+            HMap.put(getLine(5, "type.txt"), "Ham");
+            HMap.put(getLine(0, "cookie.txt"), "Choc Chip");
+            HMap.put(getLine(1, "cookie.txt"), "Double Choc");
+            HMap.put(getLine(2, "cookie.txt"), "Ras Cheese");
+            HMap.put(getLine(3, "cookie.txt"), "White Chip");
+            HMap.put(getLine(4, "cookie.txt"), "Rainbow");
+            HMap.put(getLine(0, "cup.txt"), "0.3 l");
+            HMap.put(getLine(1, "cup.txt"), "0.4 l");
+            HMap.put(getLine(2, "cup.txt"), "0.5 l");
+            HMap.put(getLine(0, "veg.txt"), "Spinach");
+            HMap.put(getLine(1, "veg.txt"), "Peppers");
+            HMap.put(getLine(2, "veg.txt"), "Olives");
+            HMap.put(getLine(3, "veg.txt"), "Cucumbers");
+            HMap.put(getLine(4, "veg.txt"), "Lettuce");
+            HMap.put(getLine(5, "veg.txt"), "pickles");
+            HMap.put(getLine(6, "veg.txt"), "Onion");
+            HMap.put(getLine(7, "veg.txt"), "Tomatoes");
+            HMap.put(getLine(8, "veg.txt"), "Jalapenos");
 
-
-        String[] list = new String[Map.size()];
-        Map<Integer, String> map = new TreeMap<>(Map);
-        Set set = map.entrySet();
+        String[] list = new String[HMap.size()];
+        Map<Integer, String> map = new TreeMap<>(HMap);
+        Set<Map.Entry<Integer, String>> entries = map.entrySet();
         int i = 0;
-        for (Object o : set) {
-            Map.Entry me = (Map.Entry) o;
-            list[i] = me.getValue() + ": " + me.getKey();
+        for (Map.Entry<Integer, String> entry : entries) {
+            list[i] = entry.getValue() + ": " + entry.getKey();
             i++;
         }
 
