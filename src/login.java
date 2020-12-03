@@ -38,14 +38,13 @@ public class login {
         j.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Inventory.checkRAF(6, "type.txt");
-        Inventory.checkRAF(5, "cookie.txt");
+        Inventory.checkRAF(5, "cookie.txt");    //check to see is text files have been created
         Inventory.checkRAF(3, "cup.txt");
         Inventory.checkRAF(9, "veg.txt");
 
         b.addActionListener(arg0 -> {
             try {
-                LoginCheck(t.getText(), t1.getText());
-                j.setVisible(false);
+                LoginCheck(t.getText(), t1.getText(), j);       //checks the login
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -54,8 +53,7 @@ public class login {
         b1.addActionListener(arg0 -> {
             try {
                 RegisterCheck();
-                j.setVisible(false);
-            } catch (IOException e) {
+            } catch (IOException e) {              //checks if login has been made
                 e.printStackTrace();
             }
         });
@@ -63,44 +61,46 @@ public class login {
 
     static private void RegisterCheck() throws IOException {
         RandomAccessFile main = new RandomAccessFile("main.txt", "rw");
-        if (main.length() == 0) {
+        if (main.length() == 0) {           //checks to see if file is empty
             Register.register();
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR: REGISTER ALREADY EXISTS");
         }
     }
 
-    private static void LoginCheck(String log, String pass) throws IOException {
+    private static void LoginCheck(String log, String pass, JFrame j) throws IOException {
         RandomAccessFile main = new RandomAccessFile("main.txt", "rw");
-        if (main.length() == 0) {
+        if (main.length() == 0) {           //checks to see if file is empty
             JOptionPane.showMessageDialog(null, "ERROR: REGISTER FIRST");
         } else {
-            main.seek(0);
-            String log1 = main.readLine();
-            main.seek(Inventory.position(1, "main.txt"));
-            String pass1 = main.readLine();
-            main.close();
+            String log1 = String.valueOf(Inventory.getLine(0,"main.txt")); // gets username
+            String pass1 = String.valueOf(Inventory.getLine(1,"main.txt")); // gets hashed password
 
             MessageDigest digest = null;
             try {
-                digest = MessageDigest.getInstance("SHA-256");
+                digest = MessageDigest.getInstance("SHA-256"); // stets MessageDigest to SHA-256 hashing algorithm
             } catch (NoSuchAlgorithmException ex) {
                 ex.printStackTrace();
             }
             assert digest != null;
             byte[] passHash = digest.digest(
-                    pass.getBytes(StandardCharsets.UTF_8));
-            String passHex = bytesToHex(passHash);
+                    pass.getBytes(StandardCharsets.UTF_8)); // gets byte array of hashed password
+            String passHex = byteToHex(passHash); // switches from byte array to string value of hex
 
-            if (pass1.equals(passHex) && log1.equals(log)) {
+            if (pass1.equals(passHex) && log1.equals(log)) { // checks to see if hashed passwords match and usernames match
+                j.setVisible(false);
                 Menu.layout();
+            } else {
+                JOptionPane.showMessageDialog(null,"ERROR: INCORRECT LOGIN DETAILS");
             }
 
         }
     }
 
-    static String bytesToHex(byte[] hash) {
+    static String byteToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder();
         for (byte b : hash) {
-            String hex = Integer.toHexString(0xff & b);
+            String hex = Integer.toHexString(0xff & b); //turns byte into hash string
             if (hex.length() == 1) hexString.append('0');
             hexString.append(hex);
         }

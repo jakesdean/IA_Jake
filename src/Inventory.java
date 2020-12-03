@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.*;
@@ -67,7 +66,7 @@ class Inventory extends Order {
         JButton b1 = new JButton("order");
         b1.setBounds(350,275,100,50);
 
-        JComboBox<String> box = new JComboBox<String>(new String[]{"Highest to Lowest","Lowest to Highest"});
+        JComboBox<String> box = new JComboBox<>(new String[]{"Highest to Lowest","Lowest to Highest"});
         box.setBounds(330,325,150,20);
 
         j.add(l);
@@ -225,15 +224,8 @@ class Inventory extends Order {
 
     static String[] getList(Integer length, String filePath) throws IOException {
         String[] arr = new String[length];
-        File file = new File(filePath);
-        RandomAccessFile raf = new RandomAccessFile(file,"rw");
-        int c = 0;
         for (int n = 0; n < length; n++) {
-            raf.seek(c);
-            arr[n] = raf.readLine();
-            raf.seek(c);
-            int i = raf.readLine().length();
-            c = c + i + 1;
+            arr[n] = String.valueOf(getLine(n,filePath));
         }
         return arr;
     }

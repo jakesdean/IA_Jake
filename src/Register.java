@@ -55,14 +55,14 @@ public class Register extends login {
                 byte[] passHash = digest.digest(
                         pass.getBytes(StandardCharsets.UTF_8));
 
-                String passHex = bytesToHex(passHash);
+                String passHex = byteToHex(passHash);
 
                 try {
                     main.writeBytes(usr + "\n" + passHex);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-                System.exit(0);
+                Menu.layout();
             });
             }
     }

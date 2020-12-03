@@ -7,7 +7,6 @@ public class Order {
     private static Integer cup;
     private static final Integer[] veggies = new Integer[9];
 
-
     void setType(Integer type) {
         Order.type = type;
     }
