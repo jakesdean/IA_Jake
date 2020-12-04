@@ -98,12 +98,14 @@ public class login {
     }
 
     static String byteToHex(byte[] hash) {
-        StringBuilder hexString = new StringBuilder();
+        StringBuilder hexBuilder = new StringBuilder();
         for (byte b : hash) {
             String hex = Integer.toHexString(0xff & b); //turns byte into hash string
-            if (hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
+            if (hex.length() == 1) {
+                hexBuilder.append('0');
+            }
+            hexBuilder.append(hex);
         }
-        return hexString.toString();
+        return hexBuilder.toString(); // returns the hex as a string
     }
 }

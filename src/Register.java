@@ -43,7 +43,7 @@ public class Register extends login {
             j.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
             b.addActionListener(arg0 -> {
-                pass = t1.getText();
+                pass = t1.getText();   //gets username and password for GUI
                 usr = t.getText();
                 MessageDigest digest = null;
                 try {
