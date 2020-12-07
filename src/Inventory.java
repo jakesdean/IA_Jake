@@ -225,44 +225,44 @@ class Inventory extends Order {
     static String[] getList(Integer length, String filePath) throws IOException {
         String[] arr = new String[length];
         for (int n = 0; n < length; n++) {
-            arr[n] = String.valueOf(getLine(n,filePath));
+            arr[n] = getLine(n,filePath);
         }
         return arr;
     }
 
 
-    static Integer getLine(Integer line, String filePath) throws IOException {
+    static String getLine(Integer line, String filePath) throws IOException {
         File file = new File(filePath);
         RandomAccessFile raf = new RandomAccessFile(file, "rw");
         raf.seek(position(line, filePath));
-        return Integer.parseInt(raf.readLine());
+        return raf.readLine();
     }
 
     static void orderInv(String option) throws IOException {
         HashMap<Integer, String> HMap = new HashMap<>();
-            HMap.put(getLine(1, "type.txt"), "Chicken");
-            HMap.put(getLine(2, "type.txt"), "Salami");
-            HMap.put(getLine(3, "type.txt"), "Veggie");
-            HMap.put(getLine(0, "type.txt"), "Steak");
-            HMap.put(getLine(4, "type.txt"), "Tuna");
-            HMap.put(getLine(5, "type.txt"), "Ham");
-            HMap.put(getLine(0, "cookie.txt"), "Choc Chip");
-            HMap.put(getLine(1, "cookie.txt"), "Double Choc");
-            HMap.put(getLine(2, "cookie.txt"), "Ras Cheese");
-            HMap.put(getLine(3, "cookie.txt"), "White Chip");
-            HMap.put(getLine(4, "cookie.txt"), "Rainbow");
-            HMap.put(getLine(0, "cup.txt"), "0.3 l");
-            HMap.put(getLine(1, "cup.txt"), "0.4 l");
-            HMap.put(getLine(2, "cup.txt"), "0.5 l");
-            HMap.put(getLine(0, "veg.txt"), "Spinach");
-            HMap.put(getLine(1, "veg.txt"), "Peppers");
-            HMap.put(getLine(2, "veg.txt"), "Olives");
-            HMap.put(getLine(3, "veg.txt"), "Cucumbers");
-            HMap.put(getLine(4, "veg.txt"), "Lettuce");
-            HMap.put(getLine(5, "veg.txt"), "pickles");
-            HMap.put(getLine(6, "veg.txt"), "Onion");
-            HMap.put(getLine(7, "veg.txt"), "Tomatoes");
-            HMap.put(getLine(8, "veg.txt"), "Jalapenos");
+            HMap.put(Integer.valueOf(getLine(1, "type.txt")), "Chicken");
+            HMap.put(Integer.valueOf(getLine(2, "type.txt")), "Salami");
+            HMap.put(Integer.valueOf(getLine(3, "type.txt")), "Veggie");
+            HMap.put(Integer.valueOf(getLine(0, "type.txt")), "Steak");
+            HMap.put(Integer.valueOf(getLine(4, "type.txt")), "Tuna");
+            HMap.put(Integer.valueOf(getLine(5, "type.txt")), "Ham");
+            HMap.put(Integer.valueOf(getLine(0, "cookie.txt")), "Choc Chip");
+            HMap.put(Integer.valueOf(getLine(1, "cookie.txt")), "Double Choc");
+            HMap.put(Integer.valueOf(getLine(2, "cookie.txt")), "Ras Cheese");
+            HMap.put(Integer.valueOf(getLine(3, "cookie.txt")), "White Chip");
+            HMap.put(Integer.valueOf(getLine(4, "cookie.txt")), "Rainbow");
+            HMap.put(Integer.valueOf(getLine(0, "cup.txt")), "0.3 l");
+            HMap.put(Integer.valueOf(getLine(1, "cup.txt")), "0.4 l");
+            HMap.put(Integer.valueOf(getLine(2, "cup.txt")), "0.5 l");
+            HMap.put(Integer.valueOf(getLine(0, "veg.txt")), "Spinach");
+            HMap.put(Integer.valueOf(getLine(1, "veg.txt")), "Peppers");
+            HMap.put(Integer.valueOf(getLine(2, "veg.txt")), "Olives");
+            HMap.put(Integer.valueOf(getLine(3, "veg.txt")), "Cucumbers");
+            HMap.put(Integer.valueOf(getLine(4, "veg.txt")), "Lettuce");
+            HMap.put(Integer.valueOf(getLine(5, "veg.txt")), "pickles");
+            HMap.put(Integer.valueOf(getLine(6, "veg.txt")), "Onion");
+            HMap.put(Integer.valueOf(getLine(7, "veg.txt")), "Tomatoes");
+            HMap.put(Integer.valueOf(getLine(8, "veg.txt")), "Jalapenos");
 
         String[] list = new String[HMap.size()];
         Map<Integer, String> map = new TreeMap<>(HMap);
