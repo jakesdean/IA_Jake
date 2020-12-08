@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.lang.annotation.Retention;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -59,7 +60,7 @@ public class login {
         });
     }
 
-    static private void RegisterCheck() throws IOException {
+    private static void RegisterCheck() throws IOException {
         RandomAccessFile main = new RandomAccessFile("main.txt", "rw");
         if (main.length() == 0) {           //checks to see if file is empty
             Register.register();
@@ -76,18 +77,9 @@ public class login {
             String log1 = String.valueOf(Inventory.getLine(0,"main.txt")); // gets username
             String pass1 = String.valueOf(Inventory.getLine(1,"main.txt")); // gets hashed password
 
-            MessageDigest digest = null;
-            try {
-                digest = MessageDigest.getInstance("SHA-256"); // stets MessageDigest to SHA-256 hashing algorithm
-            } catch (NoSuchAlgorithmException ex) {
-                ex.printStackTrace();
-            }
-            assert digest != null;
-            byte[] passHash = digest.digest(
-                    pass.getBytes(StandardCharsets.UTF_8)); // gets byte array of hashed password
-            String passHex = byteToHex(passHash); // switches from byte array to string value of hex
+            String hashPass = getHash(pass);
 
-            if (pass1.equals(passHex) && log1.equals(log)) { // checks to see if hashed passwords match and usernames match
+            if (pass1.equals(hashPass) && log1.equals(log)) { // checks to see if hashed passwords match and usernames match
                 j.setVisible(false);
                 Menu.layout();
             } else {
@@ -97,15 +89,24 @@ public class login {
         }
     }
 
-    static String byteToHex(byte[] hash) {
+    static String getHash(String string){
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256"); // stets MessageDigest to SHA-256 hashing algorithm
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+        assert digest != null;
+        byte[] passHash = digest.digest(
+                string.getBytes(StandardCharsets.UTF_8)); // gets byte array of hashed password
         StringBuilder hexBuilder = new StringBuilder();
-        for (byte b : hash) {
+        for (byte b : passHash) {
             String hex = Integer.toHexString(0xff & b); //turns byte into hash string
             if (hex.length() == 1) {
                 hexBuilder.append('0');
             }
             hexBuilder.append(hex);
         }
-        return hexBuilder.toString(); // returns the hex as a string
+        return hexBuilder.toString(); // switches from byte array to string value of hex
     }
 }

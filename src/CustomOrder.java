@@ -167,7 +167,5 @@ public class CustomOrder extends addInventory {
             j.setVisible(false);
             Menu.layout();
         });
-
     }
-
 }

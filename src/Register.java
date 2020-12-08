@@ -45,17 +45,8 @@ public class Register extends login {
             b.addActionListener(arg0 -> {
                 pass = t1.getText();   //gets username and password for GUI
                 usr = t.getText();
-                MessageDigest digest = null;
-                try {
-                    digest = MessageDigest.getInstance("SHA-256");
-                } catch (NoSuchAlgorithmException ex) {
-                    ex.printStackTrace();
-                }
-                assert digest != null;
-                byte[] passHash = digest.digest(
-                        pass.getBytes(StandardCharsets.UTF_8));
 
-                String passHex = byteToHex(passHash);
+                String passHex = getHash(pass);
 
                 try {
                     main.writeBytes(usr + "\n" + passHex);
@@ -64,6 +55,6 @@ public class Register extends login {
                 }
                 Menu.layout();
             });
-            }
     }
+}
 
