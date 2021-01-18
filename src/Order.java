@@ -1,68 +1,66 @@
 public class Order {
 
-    private static Integer type;
-    private static Integer length;
-    private static Integer cookie;
-    private static Integer menu;
-    private static Integer cup;
-    private static final Integer[] veggies = new Integer[9];
+    private Integer type;
+    private Integer length;
+    private Integer cookie;
+    private Integer menu;
+    private Integer cup;
+    private final Integer[] veggies = new Integer[9];
 
     void setType(Integer type) {
-        Order.type = type;
+        this.type = type;
     }
 
     void setLength(Integer length) {
-        Order.length = length;
+        this.length = length;
     }
 
     void setCookie(Integer cookie) {
-        Order.cookie = cookie;
+        this.cookie = cookie;
     }
 
     void setMenu(Integer menu) {
-        Order.menu = menu;
+        this.menu = menu;
     }
 
     void setCup(Integer cup) {
-        Order.cup = cup;
+        this.cup = cup;
     }
 
     void setVeggies(Integer[] veggies) {
-        System.arraycopy(veggies, 0, Order.veggies, 0, 9);
+        System.arraycopy(veggies, 0, this.veggies, 0, 9);
     }
 
-    static Integer getType() {
+    Integer getType() {
         return type;
     }
 
-    static Integer getLength() {
+    Integer getLength() {
         return length;
     }
 
-    static Integer getCookie() {
+    Integer getCookie() {
         return cookie;
     }
 
-    static Integer getCup() {
+    Integer getCup() {
         return cup;
     }
 
-    static Integer[] getVeggies() {
+    Integer[] getVeggies() {
         return veggies;
     }
 
-    static Double getPrice() {
+    Double getPrice() {
         double price;
         double tPrice;
         if (menu == 0) {
             price = 16;
         } else if (menu == 1 && length == 1) {
             price = 12;
-
         } else if (menu == 1 && length == 0) {
             price = 10;
         } else {
-
         if (type == 3) {
             tPrice = 5.90;
         } else if (type == 2 || type == 4|| type == 5) {
@@ -87,10 +85,8 @@ public class Order {
             price = price + 3.50;
         } else if (cup == 2) {
             price = price + 4.00;
-        }
+        }}
         return price;
-        }
-      return price;
     }
 }
 

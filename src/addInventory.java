@@ -490,7 +490,7 @@ class addInventory extends Inventory{
             }
 
             j.setVisible(false);
-            Menu.layout();
+            new Menu();
         });
     }
 }

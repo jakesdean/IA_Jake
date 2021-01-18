@@ -139,7 +139,7 @@ class Inventory extends Order {
 
         b.addActionListener(arg0 -> {
             j.setVisible(false);
-            Menu.layout();
+            new Menu();
         });
 
         b1.addActionListener(arg0 -> {
@@ -152,7 +152,7 @@ class Inventory extends Order {
         });
     }
 
-    static void takeInventory() throws IOException {
+    static void takeInventory(Order order) throws IOException {
 
         RandomAccessFile type = new RandomAccessFile("type.txt", "rw");
         RandomAccessFile cookie = new RandomAccessFile("cookie.txt", "rw");
@@ -160,29 +160,29 @@ class Inventory extends Order {
         RandomAccessFile veg = new RandomAccessFile("veg.txt", "rw");
 
 
-        type.seek(position(getType(),"type.txt"));
+        type.seek(position(order.getType(),"type.txt"));
         Integer c = null;
         int l = Integer.parseInt(type.readLine());
-        if (getLength() == 1) {
+        if (order.getLength() == 1) {
             c = l - 2;
-        } else if (getLength() == 0){
+        } else if (order.getLength() == 0){
             c = l - 1;
         }
-        addInventory.addInv(c, getType(), "type.txt");
+        addInventory.addInv(c, order.getType(), "type.txt");
 
-        if (getCookie() != 5) {
-            cookie.seek(position(getCookie(), "cookie.txt"));
+        if (order.getCookie() != 5) {
+            cookie.seek(position(order.getCookie(), "cookie.txt"));
             c = Integer.parseInt(cookie.readLine()) - 1;
-            addInventory.addInv(c, getCookie(), "cookie.txt");
+            addInventory.addInv(c, order.getCookie(), "cookie.txt");
         }
 
-        if (getCup() != 3) {
-            cup.seek(position(getCup(),"cup.txt"));
+        if (order.getCup() != 3) {
+            cup.seek(position(order.getCup(),"cup.txt"));
             c = Integer.parseInt(cup.readLine()) - 1;
-            addInventory.addInv(c, getCup(), "cup.txt");
+            addInventory.addInv(c, order.getCup(), "cup.txt");
         }
 
-        Integer[] ary = getVeggies();
+        Integer[] ary = order.getVeggies();
 
         for (int i = 0; i < 9; i ++) {
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 
 class Menu {
 
-    static void layout() {
+    Menu() {
 
         JFrame f=new JFrame("menu");
         f.setSize(400,300);
@@ -16,8 +16,6 @@ class Menu {
         b2.setBounds(0,100,200, 100);
         JButton b3=new JButton("Custom Order");
         b3.setBounds(200,100,200, 100);
-
-
 
         JTextField textField= new JTextField();
         textField.setBounds(210, 50, 130, 30);
@@ -54,7 +52,6 @@ class Menu {
             f.setVisible(false);
         });
         b3.addActionListener(arg0 -> {
-            label1.setText("not yet implemented");
             f.setVisible(false);
             try {
                 CustomOrder.addCustomOrder();

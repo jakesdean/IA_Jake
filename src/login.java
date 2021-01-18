@@ -53,17 +53,18 @@ public class login {
 
         b1.addActionListener(arg0 -> {
             try {
-                RegisterCheck();
+                RegisterCheck(j);
             } catch (IOException e) {              //checks if login has been made
                 e.printStackTrace();
             }
         });
     }
 
-    private static void RegisterCheck() throws IOException {
+    private static void RegisterCheck(JFrame j) throws IOException {
         RandomAccessFile main = new RandomAccessFile("main.txt", "rw");
         if (main.length() == 0) {           //checks to see if file is empty
-            Register.register();
+            new Register();
+            j.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "ERROR: REGISTER ALREADY EXISTS");
         }
@@ -81,7 +82,7 @@ public class login {
 
             if (pass1.equals(hashPass) && log1.equals(log)) { // checks to see if hashed passwords match and usernames match
                 j.setVisible(false);
-                Menu.layout();
+                new Menu();
             } else {
                 JOptionPane.showMessageDialog(null,"ERROR: INCORRECT LOGIN DETAILS");
             }
@@ -89,7 +90,7 @@ public class login {
         }
     }
 
-    static String getHash(String string){
+    public static String getHash(String string){
         MessageDigest digest = null;
         try {
             digest = MessageDigest.getInstance("SHA-256"); // stets MessageDigest to SHA-256 hashing algorithm

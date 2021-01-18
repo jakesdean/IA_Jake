@@ -2,17 +2,14 @@ import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 
 public class Register extends login {
-    private static String usr;
-    private static String pass;
+    private String usr;
+    private String pass;
 
 
-    static void register() throws FileNotFoundException {
+    Register() throws FileNotFoundException {
 
 
         RandomAccessFile main = new RandomAccessFile("main.txt", "rw");
@@ -43,8 +40,8 @@ public class Register extends login {
             j.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
             b.addActionListener(arg0 -> {
-                pass = t1.getText();   //gets username and password for GUI
-                usr = t.getText();
+                this.pass = t1.getText();   //gets username and password for GUI
+                this.usr = t.getText();
 
                 String passHex = getHash(pass);
 
@@ -53,7 +50,8 @@ public class Register extends login {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-                Menu.layout();
+                j.setVisible(false);
+                new Menu();
             });
     }
 }

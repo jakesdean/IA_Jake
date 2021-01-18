@@ -3,9 +3,10 @@ import java.io.IOException;
 
 class addOrder extends Order{
 
+    static Order order = new Order();
+
     static void addType() {
 
-        Order order = new Order();
         JFrame f=new JFrame("Type");
         f.setSize(400,400);
         JButton b=new JButton("Steak");
@@ -65,7 +66,6 @@ class addOrder extends Order{
     }
 
     private static void addLength() {
-        Order order = new Order();
         JFrame f=new JFrame("Length");
         f.setSize(400,250);
         JButton b=new JButton("15 centimeter");
@@ -92,7 +92,6 @@ class addOrder extends Order{
     }
 
     private static void addCookie() {
-        Order order = new Order();
         JFrame f=new JFrame("Cookie");
         f.setSize(400,350);
         JButton b=new JButton("Chocolate Chip");
@@ -159,7 +158,6 @@ class addOrder extends Order{
     }
 
     private static void addMenu() {
-        Order order = new Order();
 
         JFrame f=new JFrame("Menu");
         f.setSize(400,350);
@@ -177,13 +175,13 @@ class addOrder extends Order{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
 
-        if (getCookie() == 5 || getCup() == 3) {
+        if (order.getCookie() == 5 || order.getCup() == 3) {
             order.setMenu(2);
             f.setVisible(false);
             showPrice();
         }
 
-        if (getCup() != 0) {
+        if (order.getCup() != 0) {
             b1.setVisible(false);
         }
         b.addActionListener(arg0 -> {
@@ -204,7 +202,6 @@ class addOrder extends Order{
     }
 
     private static void addDrink() {
-        Order order = new Order();
         JFrame f=new JFrame("Drink");
         f.setSize(400,250);
         JButton b=new JButton("0.3 l");
@@ -248,7 +245,6 @@ class addOrder extends Order{
     }
 
     static void addVeggies() {
-        Order order = new Order();
         Integer[] veggies = new Integer[9];
 
         JFrame f = new JFrame();
@@ -372,7 +368,7 @@ class addOrder extends Order{
     static void showPrice() {
         JFrame f = new JFrame("Price");
         f.setSize(400,200);
-        JLabel l = new JLabel("Price: " + getPrice(), SwingConstants.CENTER);
+        JLabel l = new JLabel("Price: " + order.getPrice(), SwingConstants.CENTER);
         l.setBounds(150, 50, 100, 20);
         JButton b = new JButton("OK");
         b.setBounds(150, 100, 100, 50);
@@ -385,11 +381,11 @@ class addOrder extends Order{
         b.addActionListener(arg0 -> {
             f.setVisible(false);
             try {
-                Inventory.takeInventory();
+                Inventory.takeInventory(order);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Menu.layout();
+            new Menu();
         });
 
     }
